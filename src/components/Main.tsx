@@ -1,8 +1,8 @@
 
-const Main = ({ data }: { data: any }) => {
+const Main = ({ size, data }: { size: boolean, data: any }) => {
     return (
         <div className="imgContainer">
-            <img src={data?.hdurl || "mars.png"} alt={data?.title || 'bgImage'} className="bgImage" />
+            <img src={data?.hdurl || "mars.png"} alt={data?.title || 'bgImage'} className={`${size ? 'bgImgContain' : 'bgImgCover'}`} />
         </div>
     )
 }

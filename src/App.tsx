@@ -7,7 +7,11 @@ function App() {
   const [data, setData] = useState(null);
   // const [loading, setLoading] = useState(false);
   const [showModal, setShowModal] = useState<boolean | null>(false);
+  const [size, setSize] = useState<boolean>(true);
 
+  const handleImgSize = () => {
+    setSize(!size);
+  }
   const handleToggleModal = () => {
     setShowModal(!showModal);
   }
@@ -44,7 +48,7 @@ function App() {
   return (
     <>
       {data ?
-        (<Main data={data} />) : (
+        (<Main size={size} data={data} />) : (
           <div className="loadingState">
             <i className="fa-solid fa-gear"></i>
           </div>
@@ -53,7 +57,7 @@ function App() {
       {showModal && (
         <SideBar data={data} handleToggleModal={handleToggleModal} />
       )}
-      {data && (<Footer data={data} handleToggleModal={handleToggleModal} />)}
+      {data && (<Footer setSize={handleImgSize} size={size} data={data} handleToggleModal={handleToggleModal} />)}
     </>
   )
 }
